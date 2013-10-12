@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="">
+
+    <title>Leaflet-Tabletop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.0.2/css/font-awesome.min.css" />
+
+    <!-- Custom styles for this template -->
+    <link href="http://getbootstrap.com/examples/navbar-fixed-top/navbar-fixed-top.css" rel="stylesheet">
+
+    <!-- Stylesheets for Leaflet.js -->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+
+     <!--[if lte IE 8]>
+         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+     <![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js></script>
+    <![endif]-->
+
+    <style>
+      #map { height: 600px; width: 100%; position: absolute;}
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Leaflet-Tabletop</a>
+        </div>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Leaflet-Tabletop</h1>
+        <p>Below are examples of basic Leaflet maps, also using Tabletop.js.</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="http://leafletjs.com/">View Fusion Tables docs &raquo;</a>
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-lg-8">
+          <div id="map">
+          </div>
+        </div>
+      </div>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/holder/2.0/holder.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+
+    <script>
+  // are we on a small screen?
+  small = ($(document).width() < 480)
+  // create a map in the "map" div, set the view to a given place and zoom
+  map = L.map('map', {
+      scrollWheelZoom: false,
+      maxZoom: 16,
+      minZoom: 9,
+      maxBounds: L.latLngBounds([40.5348,-89.6842],[42.9485,-86.3168])
+    }).setView([41.838299, -87.706953], small ? 9 : 11);
+
+// add an OpenStreetMap tile layer
+  L.tileLayer(
+    'http://{s}.tribapps.com/chicago-print/{z}/{x}/{y}.png', {
+      subdomains: ['maps1'],
+      attribution: 'Map data &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 16,
+      minZoom: 9
+    }).addTo(map);
+
+  // City limits mask
+  L.tileLayer(
+    "http://media.apps.chicagotribune.com/maptiles/chicago-mask/{z}/{x}/{y}.png",
+    { maxZoom: 16, minZoom: 8, opacity: 0.5 }).addTo(map);
+
+// add a marker in the given location, attach some popup content to it and open the popup
+L.marker([51.5, -0.09]).addTo(map)
+    .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
+    .openPopup();
+
+    </script>
+  </body>
+</html>
