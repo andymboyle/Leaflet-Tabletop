@@ -33,8 +33,8 @@
     <![endif]-->
 
     <style>
-      #map { height: 600px; width: 100%; position: absolute;}
-      #map2 { height: 600px; width: 100%; position: absolute;}
+      #map { height: 600px; width: 100%; position: absolute; padding-bottom:20px;}
+      #map2 { height: 600px; width: 100%; position: absolute; margin-top:600px}
     </style>
   </head>
 
@@ -66,13 +66,14 @@
         </p>
       </div>
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
           <div id="map">
           </div>
         </div>
       </div>
+      <br>
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
           <div id="map2">
           </div>
         </div>
@@ -96,7 +97,7 @@
       maxZoom: 16,
       minZoom: 9,
       //maxBounds: L.latLngBounds([40.5348,-89.6842],[42.9485,-86.3168])
-    }).setView([41.838299, -87.706953], 13);
+    }).setView([41.838299, -87.706953], 11);
 
 // add an OpenStreetMap tile layer
   L.tileLayer(
@@ -113,8 +114,8 @@
     { maxZoom: 16, minZoom: 8, opacity: 0.5 }).addTo(map);
 
 // add a marker in the given location, attach some popup content to it and open the popup
-L.marker([41.838299, -87.706953]).addTo(map)
-    .bindPopup('A pretty popup with information. <br><strong> Easily customizable.</strong>')
+L.marker([41.890345, -87.623333]).addTo(map)
+    .bindPopup('Here is a popup at a zoomed out view. <br><strong> Easily customizable.</strong>')
     .openPopup();
 
 // Second map
@@ -123,7 +124,7 @@ L.marker([41.838299, -87.706953]).addTo(map)
       maxZoom: 16,
       minZoom: 9,
       //maxBounds: L.latLngBounds([40.5348,-89.6842],[42.9485,-86.3168])
-    }).setView([41.838299, -87.706953], 13);
+    }).setView([41.890345, -87.623333], 15);
 
 // add an OpenStreetMap tile layer
   L.tileLayer(
@@ -140,8 +141,8 @@ L.marker([41.838299, -87.706953]).addTo(map)
     { maxZoom: 16, minZoom: 8, opacity: 0.5 }).addTo(map2);
 
 // add a marker in the given location, attach some popup content to it and open the popup
-L.marker([41.838299, -87.706953]).addTo(map2)
-    .bindPopup('A pretty popup with information. <br><strong> Easily customizable.</strong>')
+L.marker([41.890345, -87.623333]).addTo(map2)
+    .bindPopup('A pretty popup when it is more zoomed in. <br><strong> Easily customizable.</strong>')
     .openPopup();
 
 
